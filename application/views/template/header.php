@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= base_url();?>assets/css/bootstrap.min.css">
 
     <!-- Importacion de la hoja de estilo-->
-    <link rel="stylesheet" href="http://localhost/evalucion1/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url();?>/assets/css/style.css">
     <title>Book Center</title>
 </head>
 <body>
 
 <!-- Creacion de footer de la vista-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
-    <a class="navbar-brand" href="http://localhost/evalucion1/">Book Center</a>
+    <a class="navbar-brand" href="<?= base_url();?>">Book Center</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,10 +25,13 @@
 
             <!--Link hacia las vistar -->
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost/evalucion1/">Libros</a>
+                <a class="nav-link" href="<?= base_url();?>">Libros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="http://localhost/evalucion1/triangulo/index">Identificar Un triangulo</a>
+                <a class="nav-link" href="<?= base_url();?>triangulo/index">Identificar Un triangulo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url();?>rest/libro">REST</a>
             </li>
         </ul>
     </div>

@@ -65,4 +65,4 @@
 </div>
 
 <!--Importacion del JS -->
-<script src="http://localhost/evalucion1/assets/js/libro.js"></script>
+<script src="<?= base_url()?>assets/js/libro.js"></script>
