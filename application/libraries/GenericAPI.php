@@ -24,7 +24,7 @@ class GenericAPI extends CI_Controller
             }
         } else {
             //Manda un error diciendo que el usuario realizo un bad request
-            return http_response_code(400);
+            http_response_code(400);
             //Mensaje que verá el usuario
             echo json_encode(array("Mensaje" => "Error! Algo salio mal al realizar la peticion"));
         }
