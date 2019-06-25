@@ -128,6 +128,7 @@ function actualizar() {
             if (this.readyState == 4) {
                 recargar();
                 limpiar();
+                reniciar_btn();
                 id="";
             }
         };
