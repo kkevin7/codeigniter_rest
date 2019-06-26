@@ -7,6 +7,14 @@ class GenericAPI extends CI_Controller
         parent::__construct();
     }
 
+    private function headers($method){
+        //Emcabezados de la pagina
+        header('Access-Control-Allow-Origin: *');
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Methods: '.$method.'');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
+    }
+
     protected function findAll()
     {
         //Comprueba que la peticion ha sido enviada por GET
@@ -100,11 +108,7 @@ class GenericAPI extends CI_Controller
     protected function create(){
         //Comprueba que la peticion ha sido enviada por POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Headers
-            header('Access-Control-Allow-Origin: *');
-            header('Content-Type: application/json');
-            header('Access-Control-Allow-Methods: POST');
-            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+            $this->headers('POST');
             $datos = json_decode(file_get_contents("php://input"), true);
             if ($this->model->create($datos)) {
                 // set response code - 201 created
@@ -127,14 +131,10 @@ class GenericAPI extends CI_Controller
     protected function update(){
         //Comprueba que la peticion ha sido enviada por POST
         if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-            // Headers
-            header('Access-Control-Allow-Origin: *');
-            header('Content-Type: application/json');
-            header('Access-Control-Allow-Methods: PUT');
-            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
+            $this->headers('PUT');
             $datos = json_decode(file_get_contents("php://input"), true);
             if ($this->model->update($datos)) {
-                // set response code - 201 created
+                // set response code - 200 OK
                 http_response_code(200);
                 // Mostrar mensaje que se creo el registro
                 echo json_encode(array("Mensaje" => "El registro fue actualizado con exito"));
@@ -154,13 +154,9 @@ class GenericAPI extends CI_Controller
     protected function delete($id){
         //Comprueba que la peticion ha sido enviada por POST
         if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-            // Headers
-            header('Access-Control-Allow-Origin: *');
-            header('Content-Type: application/json');
-            header('Access-Control-Allow-Methods: DELETE');
-            header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
+            $this->headers('DELETE');
             if ($this->model->delete($id)) {
-                // set response code - 201 created
+                // set response code - 200 OK
                 http_response_code(200);
                 // Mostrar mensaje que se creo el registro
                 echo json_encode(array("Mensaje" => "El registro fue eliminado con exitosamente"));
