@@ -42,7 +42,7 @@ class LibroModel extends CI_Model
     //Metoodo actualiza los registros de la base datos
     public function update($datos){
         $this->db->where('id_Libro', $datos['id_Libro']);
-        array_pop($datos['id_Libro']);
+        //array_pop($datos['id_Libro']);
         if($this->db->update('libro',$datos)){
             return true;
         }else{
