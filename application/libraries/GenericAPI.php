@@ -18,6 +18,7 @@ class GenericAPI extends CI_Controller
     protected function findAll()
     {
         //Comprueba que la peticion ha sido enviada por GET
+        $this->headers('GET');
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             try {
                 //Obtiene los datos del modelo
@@ -39,6 +40,7 @@ class GenericAPI extends CI_Controller
     }
     protected function findById($id){
         //Comprueba que la peticion ha sido enviada por GET
+        $this->headers('GET');
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             try {
                 //Obtiene los datos del modelo
@@ -63,6 +65,7 @@ class GenericAPI extends CI_Controller
     }
     protected function findByRange($inicio, $maxResult){
         //Comprueba que la peticion ha sido enviada por GET
+        $this->headers('GET');
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             try {
                 //Obtiene los datos del modelo
@@ -84,7 +87,8 @@ class GenericAPI extends CI_Controller
     }
 
     protected function count(){
-        //Comprueba que la peticion ha sido enviada por GET
+        //Comprueba que la peticion ha sido enviada por GET}
+        $this->headers('GET');
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             try {
                 //Obtiene los datos del modelo
@@ -107,8 +111,9 @@ class GenericAPI extends CI_Controller
 
     protected function create(){
         //Comprueba que la peticion ha sido enviada por POST
+        $this->headers('POST');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->headers('POST');
+
             $datos = json_decode(file_get_contents("php://input"), true);
             if ($this->model->create($datos)) {
                 // set response code - 201 created
@@ -130,8 +135,9 @@ class GenericAPI extends CI_Controller
     }
     protected function update(){
         //Comprueba que la peticion ha sido enviada por POST
+        $this->headers('PUT');
         if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-            $this->headers('PUT');
+
             $datos = json_decode(file_get_contents("php://input"), true);
             if ($this->model->update($datos)) {
                 // set response code - 200 OK
@@ -153,8 +159,9 @@ class GenericAPI extends CI_Controller
     }
     protected function delete($id){
         //Comprueba que la peticion ha sido enviada por POST
+        $this->headers('DELETE');
         if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-            $this->headers('DELETE');
+
             if ($this->model->delete($id)) {
                 // set response code - 200 OK
                 http_response_code(200);
