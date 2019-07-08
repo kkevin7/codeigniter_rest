@@ -13,6 +13,9 @@ class GenericAPI extends CI_Controller
         header('Content-Type: application/json');
         header('Access-Control-Allow-Methods: '.$method.'');
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-Allow-Methods, Authorization,X-Requested-With');
+        if ( "OPTIONS" === $_SERVER['REQUEST_METHOD'] ) {
+            die();
+        }
     }
 
     protected function findAll()
